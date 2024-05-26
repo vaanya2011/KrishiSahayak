@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=1.0">
+    <title>Role Selection</title>
+    <style>
+        body {
+            background-image: url('https://www.superiorwallpapers.com/nature/wonderful-green-field-hd-nature-wallpaper_1280x720.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: center;
+        }
+
+        h2, h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .toggle-link {
+            color: #007bff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+	#welcome-page {
+            color: white; /* Set text color to white or appropriate color for visibility */
+            text-align: center;
+        
+             /* Add padding to ensure content is visible */
+        }
+        img{
+    border-radius: 200px;
+    width: 200px;
+    height: 200px;
+    margin-right: 2%;
+    margin-right: 5%;
+    padding-right: 5%;
+}
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+#div2{
+    margin-top: 10%;
+    width: 100%;
+    height:20%;
+    margin-left:-10%;
+}
+#div1{
+    width:100%;
+    height:20%;
+    margin-left:-10%;
+    margin-top:10%;
+}
+    </style>
+</head>
+<body>
+    <span><div id="div2"><h1>Krishi Sahayak</h1></div></span>
+   <span> <div id="div1"><img src="Gold Luxury Initial Circle Logo.png"></div></span>
+
+    <div class="container" id="role-selection">
+        <h2>Select Your Role</h2>
+        <button onclick="selectRole('farmer')">Farmer</button>
+        <button onclick="selectRole('consumer')">Consumer</button>
+    </div>
+
+    <div class="container hidden" id="form-container">
+        <div id="farmer-login-form" class="form hidden">
+            <h2>Farmer Login</h2>
+            <form id="farmerLoginForm">
+                <label for="farmer-login-username">Username</label>
+                <input type="text" id="farmer-login-username" name="username" required>
+                
+                <label for="farmer-login-password">Password</label>
+                <input type="password" id="farmer-login-password" name="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p id="farmer-login-error-message"></p>
+            <p class="toggle-link"><a href="#" onclick="toggleForms('farmer')">Create Account</a></p>
+        </div>
+
+        <div id="farmer-create-account-form" class="form hidden">
+            <h2>Create Farmer Account</h2>
+            <form id="farmerCreateAccountForm">
+                <label for="farmer-create-username">Username</label>
+                <input type="text" id="farmer-create-username" name="username" required>
+                
+                <label for="farmer-create-password">Password</label>
+                <input type="password" id="farmer-create-password" name="password" required>
+                
+                <label for="farmer-create-email">Email</label>
+                <input type="email" id="farmer-create-email" name="email" required>
+                
+                <label for="farmer-create-mob">Mobile Number</label>
+                <input type="tel" id="farmer-create-mob" name="mob" required>
+                
+                <label for="farmer-create-city">City</label>
+                <input type="text" id="farmer-create-city" name="city" required>
+                
+                <button type="submit">Create Account</button>
+            </form>
+            <p id="farmer-create-error-message"></p>
+            <p class="toggle-link"><a href="#" onclick="toggleForms('farmer')">Login</a></p>
+        </div>
+
+        <div id="consumer-login-form" class="form hidden">
+            <h2>Consumer Login</h2>
+            <form id="consumerLoginForm">
+                <label for="consumer-login-username">Username</label>
+                <input type="text" id="consumer-login-username" name="username" required>
+                
+                <label for="consumer-login-password">Password</label>
+                <input type="password" id="consumer-login-password" name="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p id="consumer-login-error-message"></p>
+            <p class="toggle-link"><a href="#" onclick="toggleForms('consumer')">Create Account</a></p>
+        </div>
+
+        <div id="consumer-create-account-form" class="form hidden">
+            <h2>Create Consumer Account</h2>
+            <form id="consumerCreateAccountForm">
+                <label for="consumer-create-username">Username</label>
+                <input type="text" id="consumer-create-username" name="username" required>
+                
+                <label for="consumer-create-password">Password</label>
+                <input type="password" id="consumer-create-password" name="password" required>
+                
+                <label for="consumer-create-email">Email</label>
+                <input type="email" id="consumer-create-email" name="email" required>
+                
+                <label for="consumer-create-mob">Mobile Number</label>
+                <input type="tel" id="consumer-create-mob" name="mob" required>
+                
+                <label for="consumer-create-city">City</label>
+                <input type="text" id="consumer-create-city" name="city" required>
+                
+                <button type="submit">Create Account</button>
+            </form>
+            <p id="consumer-create-error-message"></p>
+            <p class="toggle-link"><a href="#" onclick="toggleForms('consumer')">Login</a></p>
+        </div>
+
+        <div id="welcome-page" class="form hidden">
+            <h1>Welcome</h1>
+            <p>Click the button below to proceed</p>
+            <button onclick="handleSellClick()">Sell</button>
+            <button onclick="handleTechReformClick()">Technological And Institutional Reform</button>
+            <button onclick="handleBuyClick()">AGRI NEEDS</button>
+            <button onclick="handleWeatherUpdatesClick()">WEATHER UPDATES</button>
+            <button onclick="handleIrrigationClick()">IRRIGATION</button>
+            <button onclick="handleBanksClick()">BANKS</button>
+            <button onclick="handleGovernmentHelplinesClick()">GOVERNMENT HELPLINES</button>
+	        <button onclick="handleLogoutClick()">Logout</button>
+        </div>
+
+        <div id="tech-reform-options" class="hidden">
+            <button onclick="showMSPPage()">MSP - Minimum Support Price</button>
+            <button onclick="showPMAASHAPage()">PMAASHA</button>
+            <button onclick="showKCCPage()">KCC - Kisan Credit Card</button>
+	        <button onclick="connectToGovt()">CONNECT TO GOVT</button>
+            <button style="color: red;" onclick="back()">Back</button>
+        </div>
+
+        <div id="sell-stock" class="hidden">
+            <h1>SELL</h1>
+            <select>
+                <option value="sugarcane">Sugarcane</option>
+                <option value="wheat">Wheat</option>
+                <option value="rice">Rice</option>
+                <option value="millet">Millet</option>
+            </select>
+            <div style="margin-top: 20px;">
+                <label for="crop-amount">Amount (kgs):</label>
+                <input type="number" id="crop-amount" name="crop-amount" min="1" required>
+            </div>
+            <button onclick="handleSubmitStockClick()">SUBMIT STOCK</button>
+            <button style="color:red;" onclick="back()">Back</button>
+        </div>
+
+        <div id="irrigation-options" class="hidden">
+            <button onclick="redirectToUPID()">UPID</button>
+            <button onclick="redirectToDDKisanChannel()">DD KISAN CHANNEL</button>
+            <button style="color:red;" onclick="back()">Back</button>
+        </div>
+        <div id="handleGovernmentHelplinesClick" class="hidden">
+            <h1>Government Helpline Numbers</h1>
+                    <p><strong>Kisan Call Center:</strong></p>
+                    <p>Toll-free number: 1800-180-1551</p>
+                    <p><strong>PM Kisan Samman Nidhi Helpline:</strong></p>
+                    <p>Toll-free number: 1800-11-5526</p>
+                    <p>Helpline number: +91-11-41516164</p>
+                    <p><strong>National Horticulture Board (NHB):</strong></p>
+                    <p>Helpline number: +91-11-25652259</p>
+                    <p><strong>National Seeds Corporation Limited (NSCL):</strong></p>
+                    <p>Helpline number: +91-11-25842172</p>
+                    <p><strong>National Bank for Agriculture and Rural Development (NABARD):</strong></p>
+                    <p>Helpline number: +91-22-26539895</p>
+            <button style="color:red;" onclick="back()">Back</button>
+        </div>
+        <div id="handleBanksClick" class="hidden">
+            <h1>Banks In Greater Noida</h1>
+            <p><strong>State Bank of India (SBI):</strong> Alpha I Commercial Belt, Greater Noida</p>
+            <p><strong>Punjab National Bank (PNB):</strong> Sector Alpha II, Greater Noida</p>
+            <p><strong>HDFC Bank:</strong> Alpha Commercial Belt, Greater Noida</p>
+            <p><strong>ICICI Bank:</strong> Alpha Commercial Belt, Greater Noida</p>
+            <p><strong>Axis Bank:</strong> Sector Beta I, Greater Noida</p>
+            <p><strong>Canara Bank:</strong> Jagat Farm, Greater Noida</p>
+            <p><strong>Bank of Baroda:</strong> Jagat Farm, Greater Noida</p>
+            <p><strong>Yes Bank:</strong> Sector Alpha II, Greater Noida</p>
+            <button style="color:red;" onclick="back()">Back</button>
+        </div>
+    </div>
+
+
+    <script>
+        function selectRole(role) {
+            document.getElementById('role-selection').classList.add('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+
+            if (role === 'farmer') {
+                document.getElementById('farmer-login-form').classList.remove('hidden');
+            } else if (role === 'consumer') {
+                document.getElementById('consumer-login-form').classList.remove('hidden');
+            }
+        }
+    
+        function toggleForms(role) {
+            if (role === 'farmer') {
+                document.getElementById('farmer-login-form').classList.toggle('hidden');
+                document.getElementById('farmer-create-account-form').classList.toggle('hidden');
+            } else if (role === 'consumer') {
+                document.getElementById('consumer-login-form').classList.toggle('hidden');
+                document.getElementById('consumer-create-account-form').classList.toggle('hidden');
+            }
+        }
+
+        document.getElementById('farmerLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('farmer-login-username').value;
+            var password = document.getElementById('farmer-login-password').value;
+            
+            var storedFarmers = JSON.parse(localStorage.getItem('farmers')) || [];
+            var farmerFound = storedFarmers.find(farmer => farmer.username === username && farmer.password === password);
+            
+            if (farmerFound) {
+                localStorage.setItem('loggedInFarmer', JSON.stringify(farmerFound));
+                showWelcomePage();
+            } else {
+                document.getElementById('farmer-login-error-message').textContent = 'Invalid username or password';
+            }
+        });
+
+        document.getElementById('farmerCreateAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('farmer-create-username').value;
+            var password = document.getElementById('farmer-create-password').value;
+            var email = document.getElementById('farmer-create-email').value;
+            var mob = document.getElementById('farmer-create-mob').value;
+            var city = document.getElementById('farmer-create-city').value;
+            
+            var storedFarmers = JSON.parse(localStorage.getItem('farmers')) || [];
+            var farmerExists = storedFarmers.find(farmer => farmer.username === username);
+            
+            if (farmerExists) {
+                document.getElementById('farmer-create-error-message').textContent = 'Username already exists';
+            } else {
+                storedFarmers.push({ username, password, email, mob, city });
+                localStorage.setItem('farmers', JSON.stringify(storedFarmers));
+                alert('Account created successfully!');
+                toggleForms('farmer');
+            }
+        });
+
+        document.getElementById('consumerLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('consumer-login-username').value;
+            var password = document.getElementById('consumer-login-password').value;
+            
+            var storedConsumers = JSON.parse(localStorage.getItem('consumers')) || [];
+            var consumerFound = storedConsumers.find(consumer => consumer.username === username && consumer.password === password);
+            
+            if (consumerFound) {
+                localStorage.setItem('loggedInConsumer', JSON.stringify(consumerFound));
+                showBlankPage();
+            } else {
+                document.getElementById('consumer-login-error-message').textContent = 'Invalid username or password';
+            }
+        });
+
+        document.getElementById('consumerCreateAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var username = document.getElementById('consumer-create-username').value;
+            var password = document.getElementById('consumer-create-password').value;
+            var email = document.getElementById('consumer-create-email').value;
+            var mob = document.getElementById('consumer-create-mob').value;
+            var city = document.getElementById('consumer-create-city').value;
+            
+            var storedConsumers = JSON.parse(localStorage.getItem('consumers')) || [];
+            var consumerExists = storedConsumers.find(consumer => consumer.username === username);
+            
+            if (consumerExists) {
+                document.getElementById('consumer-create-error-message').textContent = 'Username already exists';
+            } else {
+                storedConsumers.push({ username, password, email, mob, city });
+                localStorage.setItem('consumers', JSON.stringify(storedConsumers));
+                alert('Account created successfully!');
+                toggleForms('consumer');
+            }
+        });
+
+        function showWelcomePage() {
+            document.getElementById('farmer-login-form').classList.add('hidden');
+            document.getElementById('farmer-create-account-form').classList.add('hidden');
+            document.getElementById('sell-stock').classList.add('hidden');
+            document.getElementById('welcome-page').classList.remove('hidden');
+            document.getElementById('tech-reform-options').classList.add('hidden');
+        }
+
+        function showBlankPage() {
+            document.body.innerHTML = '<h1>Welcome, Consumer!</h1>';
+        }
+
+        function handleSellClick() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('sell-stock').classList.remove('hidden');
+        }
+
+        function handleSubmitStockClick() {
+            alert('SUBMITTED');
+            showWelcomePage();
+        }
+	
+        function handleLogoutClick() {
+            localStorage.removeItem('loggedInFarmer');
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('farmer-login-form').classList.remove('hidden');
+        }
+        function handleGovernmentHelplinesClick() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('handleGovernmentHelplinesClick').classList.remove('hidden');
+        }
+
+        function handleTechReformClick() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('tech-reform-options').classList.remove('hidden');
+        }
+
+        function handleBuyClick() {
+            window.open('https://www.iffcobazar.in/en');
+        }
+
+        function handleWeatherUpdatesClick() {
+            window.open('https://mausam.imd.gov.in/');
+        }
+
+        function handleIrrigationClick() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('irrigation-options').classList.remove('hidden');
+        }
+
+        function redirectToUPID() {
+            window.open('https://idup.gov.in/en');
+        }
+
+        function redirectToDDKisanChannel() {
+            window.open('https://www.youtube.com/c/ddkisan');
+        }
+        function back(){
+            document.getElementById('farmer-login-form').classList.add('hidden');
+            document.getElementById('farmer-create-account-form').classList.add('hidden');
+            document.getElementById('sell-stock').classList.add('hidden');
+            document.getElementById('welcome-page').classList.remove('hidden');
+            document.getElementById('tech-reform-options').classList.add('hidden');
+            document.getElementById('handleGovernmentHelplinesClick').classList.add('hidden');
+            document.getElementById('handleBanksClick').classList.add('hidden');
+        }
+
+        
+        function handleBanksClick() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('handleBanksClick').classList.remove('hidden');
+        }
+
+        function showMSPPage() {
+            window.open('https://desagri.gov.in/statistics-type/latest-minimum-support-price-msp-statement/');
+        }
+
+        function showKCCPage() {
+            window.open('https://www.myscheme.gov.in/schemes/kcc');
+        }
+
+        function showPMAASHAPage() {
+            window.open('https://www.india.gov.in/spotlight/pradhan-mantri-annadata-aay-sanrakshan-abhiyan-pm-aasha');
+        }
+
+        if (localStorage.getItem('loggedInFarmer')) {
+            showWelcomePage();
+            document.getElementById('role-selection').classList.add('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+        }
+
+        if (localStorage.getItem('loggedInConsumer')) {
+            showBlankPage();
+        }
+
+        window.addEventListener('beforeunload', function() {
+            localStorage.removeItem('loggedInFarmer');
+            localStorage.removeItem('loggedInConsumer');
+        });
+    </script>
+</body>
+</html>
